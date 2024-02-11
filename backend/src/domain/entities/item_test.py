@@ -34,3 +34,4 @@ def test_item_comparison(fixture_item_biscuit):
     item1 = Item.from_dict(fixture_item_biscuit)
     item2 = Item.from_dict(fixture_item_biscuit)
     assert item1 == item2
+    
