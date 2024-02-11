@@ -17,4 +17,4 @@ DB_PORT = os.getenv("DATABASE_PORT")
 DB_DRIVER = "mongodb"
 
 
-DB_URI = f"{DB_DRIVER}://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DB_URI = f"{DB_DRIVER}://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/"

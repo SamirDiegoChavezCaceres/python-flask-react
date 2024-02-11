@@ -3,6 +3,7 @@
 
 
 from configs import config
+import pymongo
 
 
 class Base():
@@ -10,5 +11,5 @@ class Base():
     """
 
 
-engine = None
-Session = None
+client = pymongo.MongoClient(config.DB_URI)
+Session = client[config.DB_NAME]
