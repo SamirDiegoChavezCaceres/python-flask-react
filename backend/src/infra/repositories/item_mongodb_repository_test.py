@@ -19,6 +19,12 @@ def test_item_mongodb_repository(
         mocker,
         fixture_item_biscuit,
 ):
+    
+    mocker.patch(
+        'uuid.uuid4',
+        return_value=fixture_item_biscuit['item_id']
+    )
+
     # testing the create method
     items_db_model_mock = mocker.patch(
         'src.infra.repositories.profession_mongodb_repository.ItemDBModel'
@@ -27,7 +33,7 @@ def test_item_mongodb_repository(
         'src.infra.repositories.profession_mongodb_repository.Session'
     )
     items_db_model = ItemsDBModel(
-        item_id=fixture_item_biscuit['id'],
+        item_id=fixture_item_biscuit['item_id'],
         codebar=fixture_item_biscuit['codebar'],
         name=fixture_item_biscuit['name'],
         description=fixture_item_biscuit['description'],

@@ -3,6 +3,7 @@
 # pylint: disable=missing-function-docstring
 
 
+import uuid
 import pytest
 
 
@@ -10,7 +11,7 @@ import pytest
 def fixture_item_biscuit():
     """ Fixture for a biscuit item example. """
     return {
-        "item_id": "1",
+        "item_id": uuid.uuid4(),
         "codebar": "123456789",
         "name": "Biscuit",
         "description": "Delicious biscuit",
