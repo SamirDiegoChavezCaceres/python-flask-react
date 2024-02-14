@@ -49,6 +49,7 @@ def test_item_mongodb_repository(
         fixture_item_biscuit["description"],
         fixture_item_biscuit["price"],
         fixture_item_biscuit["stock"],
+        fixture_item_biscuit["state"],
     )
     item = Item(
         items_db_model_mock.return_value.item_id,

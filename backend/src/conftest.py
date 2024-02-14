@@ -17,5 +17,5 @@ def fixture_item_biscuit():
         "description": "Delicious biscuit",
         "price": 5.0,
         "stock": 10,
-        "state": "active",
+        "state": True,
     }
