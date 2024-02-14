@@ -12,4 +12,4 @@ class Base():
 
 
 client = pymongo.MongoClient(config.DB_URI)
-Session = client[config.DB_NAME]
+session = client[config.DB_NAME]
