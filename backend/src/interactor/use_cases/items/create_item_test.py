@@ -41,8 +41,8 @@ CreateItemInputDtoValidator",
     )
     logger_mock = mocker.patch.object(LoggerInterface, "log_info")
     repository_mock.create.return_value = item
-    presenter_mock.return_value = "Test Output"
-    use_case = create_item.CreateProfessionUseCase(
+    presenter_mock.present.return_value = "Test Output"
+    use_case = create_item.CreateItemUseCase(
         presenter_mock,
         repository_mock,
         logger_mock
@@ -64,7 +64,7 @@ CreateItemInputDtoValidator",
         "Item Created Successfully"
     )
     output_dto = CreateItemOutputDto(item)
-    presenter_mock.assert_called_once_with(output_dto)
+    presenter_mock.present.assert_called_once_with(output_dto)
     assert result == "Test Output"
 
     # Test None return value from repository
@@ -72,7 +72,7 @@ CreateItemInputDtoValidator",
     item_name = fixture_item_biscuit['name']
     with pytest.raises(ItemNotCreatedException) as excinfo:
         use_case.execute(input_dto)
-    assert str(excinfo.value) == f"Item {item_name} was not created correctly"
+    assert str(excinfo.value) == f"Item '{item_name}' was not created correctly"
 
 
 def test_create_item_empty_field(mocker, fixture_item_biscuit):
@@ -85,7 +85,7 @@ def test_create_item_empty_field(mocker, fixture_item_biscuit):
         "create",
     )
     logger_mock = mocker.patch.object(LoggerInterface, "log_info")
-    use_case = create_item.CreateProfessionUseCase(
+    use_case = create_item.CreateItemUseCase(
         presenter_mock,
         repository_mock,
         logger_mock
