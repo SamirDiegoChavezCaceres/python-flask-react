@@ -67,6 +67,9 @@ def test_base_validator_with_small_data():
         "codebar": "1",
         "name": "T",
         "description": "T",
+        "price": 1.0,
+        "stock": 1,
+        "state": True,
     }
     validator = BaseValidator(data)
     with pytest.raises(ValueError) as excinfo:
@@ -78,6 +81,11 @@ Name: min length is 3"
 def test_base_validator_with_long_data():
     data = {
         "codebar": "1" * 21,
+        "name": "Test",
+        "description": "Test",
+        "price": 1.0,
+        "stock": 1,
+        "state": True,
     }
     validator = BaseValidator(data)
     with pytest.raises(ValueError) as excinfo:
@@ -88,6 +96,11 @@ def test_base_validator_with_long_data():
 def test_base_validator_with_empty_data():
     data = {
         "codebar": "",
+        "name": "Test",
+        "description": "Test",
+        "price": 1.0,
+        "stock": 1,
+        "state": True,
     }
     validator = BaseValidator(data)
     with pytest.raises(ValueError) as excinfo:
@@ -96,7 +109,12 @@ def test_base_validator_with_empty_data():
 
 
 def test_base_validator_with_required_data():
-    data = {}
+    data = {
+        "description": "Test",
+        "price": 1.0,
+        "stock": 1,
+        "state": True,
+    }
     validator = BaseValidator(data)
     with pytest.raises(ValueError) as excinfo:
         validator.validate()
