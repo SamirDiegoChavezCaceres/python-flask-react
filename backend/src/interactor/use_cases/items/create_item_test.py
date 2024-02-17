@@ -73,3 +73,31 @@ CreateItemInputDtoValidator",
     with pytest.raises(ItemNotCreatedException) as excinfo:
         use_case.execute(input_dto)
     assert str(excinfo.value) == f"Item {item_name} was not created correctly"
+
+
+def test_create_item_empty_field(mocker, fixture_item_biscuit):
+    presenter_mock = mocker.patch.object(
+        CreateItemPresenterInterface,
+        "present",
+    )
+    repository_mock = mocker.patch.object(
+        ItemRepositoryInterface,
+        "create",
+    )
+    logger_mock = mocker.patch.object(LoggerInterface, "log_info")
+    use_case = create_item.CreateProfessionUseCase(
+        presenter_mock,
+        repository_mock,
+        logger_mock
+    )
+    input_dto = CreateItemInputDto(
+        codebar="",
+        name=fixture_item_biscuit['name'],
+        description=fixture_item_biscuit['description'],
+        price=fixture_item_biscuit['price'],
+        stock=fixture_item_biscuit['stock'],
+        state=fixture_item_biscuit['state'],
+    )
+    with pytest.raises(ValueError) as excinfo:
+        use_case.execute(input_dto)
+    assert str(excinfo.value) == "Codebar: empty values not allowed"
