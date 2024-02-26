@@ -20,13 +20,12 @@ class ItemRepositoryInterface(ABC):
 
     @abstractmethod
     def create(
-                self, 
+                self,
                 codebar: str,
                 name: str,
                 description: str,
                 price: float,
                 stock: int,
-                state: bool
     ) -> Optional[Item]:
         """ Create an item
         :param codebar: The codebar of the item
@@ -41,13 +40,7 @@ class ItemRepositoryInterface(ABC):
     @abstractmethod
     def update(
                 self,
-                item_id: ItemId,
-                codebar: str,
-                name: str,
-                description: str,
-                price: float,
-                stock: int,
-                state: bool
+                item: Item
     ) -> Optional[Item]:
         """ Update an item
         :param item_id: The id of the item
@@ -59,7 +52,7 @@ class ItemRepositoryInterface(ABC):
         :param state: The state of the item
         :return: The item
         """
-    
+
     @abstractmethod
     def delete(self, item_id: ItemId) -> Optional[Item]:
         """ Delete an item
@@ -81,12 +74,19 @@ class ItemRepositoryInterface(ABC):
         """
 
     @abstractmethod
+    def get_by_name(self, name: str) -> Optional[Item]:
+        """ Get an item by name
+        :param name: The name of the item
+        :return: The item
+        """
+
+    @abstractmethod
     def activate(self, item_id: ItemId) -> Optional[Item]:
         """ Activate an item
         :param item_id: The id of the item
         :return: The item
         """
-        
+
     @abstractmethod
     def deactivate(self, item_id: ItemId) -> Optional[Item]:
         """ Deactivate an item

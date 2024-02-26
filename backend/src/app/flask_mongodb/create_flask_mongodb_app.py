@@ -5,7 +5,7 @@
 from flask import Flask, g
 from flask_cors import CORS
 from src.interactor.interfaces.logger.logger import LoggerInterface
-from src.infra.db_models.db_base import session, client
+from src.infra.db_models.mongodb.mongodb_base import session, client
 from src.app.flask_mongodb.blueprints.home_blueprint import blueprint_home
 
 

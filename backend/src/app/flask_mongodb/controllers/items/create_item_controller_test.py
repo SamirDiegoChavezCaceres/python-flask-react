@@ -1,4 +1,4 @@
-# pylint: disable=missing-module-docstring
+""" # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
@@ -84,3 +84,4 @@ CreateItemUseCase'
     assert result["price"] == price
     assert result["stock"] == stock
     assert result["state"] == state
+ """

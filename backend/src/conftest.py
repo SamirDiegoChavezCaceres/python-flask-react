@@ -15,7 +15,7 @@ def fixture_item_biscuit():
         "codebar": "123456789",
         "name": "Biscuit",
         "description": "Delicious biscuit",
-        "price": 5.0,
-        "stock": 10,
+        "price": float(5.0),
+        "stock": int(10),
         "state": True,
     }

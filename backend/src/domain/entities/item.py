@@ -23,6 +23,7 @@ class Item:
         """ Convert data from a dictionary
         """
         return cls(**data)
+
     def to_dict(self):
         """ Convert data to a dictionary
         """
