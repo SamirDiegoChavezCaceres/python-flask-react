@@ -20,7 +20,7 @@ class ItemNotCreatedException(Exception):
     def __init__(self, item_name: str, item_type: str) -> None:
         self.item_name = item_name
         self.item_type = item_type
-    
+
     def __str__(self) -> str:
         return f"{self.item_type.capitalize()} '{self.item_name}' was not \
 created correctly"
@@ -42,4 +42,13 @@ class UniqueViolationError(Exception):
     def __str__(self) -> str:
         return f"{self.table_name.capitalize()} with {self.field_name}: \
 '{self.field_value}' already exists"
-    
+
+
+class ItemNotFoundException(Exception):
+    """ This exception is raised when an item is not found.
+    """
+    def __init__(self, item_id: str) -> None:
+        self.item_id = item_id
+
+    def __str__(self) -> str:
+        return f"Item with id: {self.item_id} not found"

@@ -28,4 +28,13 @@ class Item:
         """ Convert data to a dictionary
         """
         return asdict(self)
-    
+
+item = Item(
+    item_id = "item_id",
+    codebar = "codebar",
+    name = "name",
+    description = "description",
+    price = 1.0,
+    stock = 1,
+)
+print(item.to_dict())

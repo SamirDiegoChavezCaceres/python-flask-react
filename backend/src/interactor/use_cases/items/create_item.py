@@ -16,6 +16,9 @@ from src.interactor.errors.error_classes import ItemNotCreatedException
 
 
 class CreateItemUseCase:
+    """ This class is responsible for creating a new item
+    """
+
     def __init__(
         self,
         presenter: CreateItemPresenterInterface,
