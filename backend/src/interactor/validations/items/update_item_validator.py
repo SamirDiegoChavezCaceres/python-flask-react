@@ -1,4 +1,4 @@
-""" Defines the validator for the create item input data.
+""" Defines the validator for the update item input data.
 """
 
 
@@ -7,8 +7,8 @@ from src.interactor.validations.base_input_validator import BaseInputValidator
 from src.interactor.errors.error_classes import FieldValueNotPermittedException
 
 
-class CreateItemInputDtoValidator(BaseInputValidator):
-    """ Validates the create item input data.
+class UpdateItemInputDtoValidator(BaseInputValidator):
+    """ Validates the update item input data.
     :param input_data: The input data to be validated.
     """
 
@@ -16,6 +16,9 @@ class CreateItemInputDtoValidator(BaseInputValidator):
         super().__init__(input_data)
         self.input_data = input_data
         self.__schema = {
+            "item_id": {
+                "empty": False,
+            },
             "codebar": {
                 "type": "string",
                 "maxlength": 20,
