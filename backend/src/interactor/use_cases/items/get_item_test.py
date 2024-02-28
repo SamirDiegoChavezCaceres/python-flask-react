@@ -64,9 +64,10 @@ GetItemInputDtoValidator",
 
     # Test None return from repository
     repository_mock.get.return_value = None
+    item_id = fixture_item_biscuit['item_id']
     with pytest.raises(ItemNotFoundException) as exc_info:
         use_case.execute(input_dto)
-    assert str(exc_info.value) == "Item not found"
+    assert str(exc_info.value) == f"Item with id: {item_id} not found"
 
 
 def test_get_item_empty_field(mocker):
