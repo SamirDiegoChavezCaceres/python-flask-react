@@ -43,14 +43,8 @@ class ItemRepositoryInterface(ABC):
                 item: Item
     ) -> Optional[Item]:
         """ Update an item
-        :param item_id: The id of the item
-        :param codebar: The codebar of the item
-        :param name: The name of the item
-        :param description: The description of the item
-        :param price: The price of the item
-        :param stock: The stock of the item
-        :param state: The state of the item
-        :return: The item
+        :param item: The item
+        :return: The item updated
         """
 
     @abstractmethod

@@ -4,13 +4,14 @@
 
 from dataclasses import dataclass, asdict
 from src.domain.entities.item import Item
+from src.domain.value_objects import ItemId
 
 
 @dataclass
 class UpdateItemInputDto:
     """ Input Dto for update item
     """
-    item_id: str
+    item_id: ItemId
     codebar: str
     name: str
     description: str
