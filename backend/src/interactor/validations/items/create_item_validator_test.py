@@ -76,7 +76,7 @@ def test_base_validator_with_empty_data():
     assert str(excinfo.value) == "Codebar: empty values not allowed"
 
 
-def test_create_item_custom_validation(fixture_item_biscuit):
+def test_create_item_custom_validation():
     data = {
         "codebar": "1234567890",
         "name": "Item",
