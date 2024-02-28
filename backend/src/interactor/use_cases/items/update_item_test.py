@@ -10,7 +10,7 @@ from src.interactor.dtos.items.update_item_dtos \
     import UpdateItemInputDto, UpdateItemOutputDto
 from src.interactor.interfaces.repositories.item_repository \
     import ItemRepositoryInterface
-from src.interactor.interfaces.presenters.update_item_presenter \
+from src.interactor.interfaces.presenters.items.update_item_presenter \
     import UpdateItemPresenterInterface
 from src.interactor.interfaces.logger.logger import LoggerInterface
 from src.interactor.errors.error_classes import ItemNotFoundException
@@ -61,7 +61,7 @@ UpdateItemInputDtoValidator",
     input_dto_validator_mock_instance = input_dto_validator_mock.return_value
     input_dto_validator_mock_instance.validate.assert_called_once_with()
     logger_mock.log_info.assert_called_once_with(
-        "Item Updated Successfully"
+        "Item Saved Successfully"
     )
     output_dto = UpdateItemOutputDto(item)
     presenter_mock.present.assert_called_once_with(output_dto)
@@ -99,6 +99,6 @@ def test_update_item_empty_field(mocker, fixture_item_biscuit):
         stock=fixture_item_biscuit['stock'],
         state=fixture_item_biscuit['state'],
     )
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(ValueError) as excinfo:
         use_case.execute(input_dto)
-    assert str(exc_info.value) == "Name: empty values not allowed"
+    assert str(excinfo.value) == "Name: empty values not allowed"

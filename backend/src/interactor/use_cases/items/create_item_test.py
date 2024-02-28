@@ -10,7 +10,7 @@ from src.interactor.dtos.items.create_item_dtos \
     import CreateItemInputDto, CreateItemOutputDto
 from src.interactor.interfaces.repositories.item_repository \
     import ItemRepositoryInterface
-from src.interactor.interfaces.presenters.create_item_presenter \
+from src.interactor.interfaces.presenters.items.create_item_presenter \
     import CreateItemPresenterInterface
 from src.interactor.interfaces.logger.logger import LoggerInterface
 from src.interactor.errors.error_classes import ItemNotCreatedException
