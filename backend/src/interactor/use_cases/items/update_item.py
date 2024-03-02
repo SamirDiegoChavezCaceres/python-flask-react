@@ -51,7 +51,7 @@ class UpdateItemUseCase:
         )
         if item is None:
             self.logger.log_exception("Item not found")
-            raise ItemNotFoundException(input_dto.item_id)
+            raise ItemNotFoundException("id", input_dto.item_id)
         output_dto = UpdateItemOutputDto(item)
         presenter_response = self.presenter.present(output_dto)
         self.logger.log_info("Item Saved Successfully")

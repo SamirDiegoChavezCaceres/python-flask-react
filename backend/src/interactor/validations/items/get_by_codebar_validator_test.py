@@ -4,35 +4,35 @@
 
 
 import pytest
-from src.interactor.validations.items.get_item_validator \
-    import GetItemInputDtoValidator
+from src.interactor.validations.items.get_by_codebar_validator \
+    import GetItemByCodebarInputDtoValidator
 
 
-def test_get_item_validator_valid_data(
+def test_get_by_codebar_validator_valid_data(
         mocker,
         fixture_item_biscuit
 ):
     mocker.patch("src.interactor.validations.base_input_validator.\
 BaseInputValidator.verify")
     input_data = {
-        "item_id": fixture_item_biscuit["item_id"]
+        "codebar": fixture_item_biscuit["codebar"]
     }
     schema = {
-        "item_id": {
+        "codebar": {
             "empty": False,
             "required": True,
         }
     }
-    validator = GetItemInputDtoValidator(input_data)
+    validator = GetItemByCodebarInputDtoValidator(input_data)
     validator.validate()
     validator.verify.assert_called_once_with(schema) # pylint: disable=no-member
 
 
 def test_base_validator_with_empty_data():
     data = {
-        "item_id": ""
+        "codebar": ""
     }
-    validator = GetItemInputDtoValidator(data)
+    validator = GetItemByCodebarInputDtoValidator(data)
     with pytest.raises(ValueError) as excinfo:
         validator.validate()
-    assert str(excinfo.value) == "Item_id: empty values not allowed"
+    assert str(excinfo.value) == "Codebar: empty values not allowed"

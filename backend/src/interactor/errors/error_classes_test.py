@@ -33,7 +33,7 @@ def test_unique_violation_error():
 
 def test_item_not_found_exception():
     with pytest.raises(ItemNotFoundException) as exception_info:
-        raise ItemNotFoundException("item id")
+        raise ItemNotFoundException("id","item id")
     assert str(exception_info.value) == "Item with id: item id not found"
 
 

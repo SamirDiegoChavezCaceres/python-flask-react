@@ -47,11 +47,12 @@ class UniqueViolationError(Exception):
 class ItemNotFoundException(Exception):
     """ This exception is raised when an item is not found.
     """
-    def __init__(self, item_id: str) -> None:
+    def __init__(self, field_name, item_id: str) -> None:
+        self.field_name = field_name
         self.item_id = item_id
 
     def __str__(self) -> str:
-        return f"Item with id: {self.item_id} not found"
+        return f"Item with {self.field_name}: {self.item_id} not found"
 
 
 class ItemsNotFoundException(Exception):
