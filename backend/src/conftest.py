@@ -19,3 +19,18 @@ def fixture_item_biscuit():
         "stock": int(10),
         "state": True,
     }
+
+
+@pytest.fixture
+def fixture_item_chocolate():
+    """ Fixture for a chocolate item example. """
+    return {
+        "item_id": uuid.uuid4(),
+        "codebar": "987654321",
+        "name": "Chocolate",
+        "description": "Delicious chocolate",
+        "price": float(3.0),
+        "stock": int(5),
+        "state": True,
+    }
+

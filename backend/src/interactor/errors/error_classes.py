@@ -52,3 +52,10 @@ class ItemNotFoundException(Exception):
 
     def __str__(self) -> str:
         return f"Item with id: {self.item_id} not found"
+
+
+class ItemsNotFoundException(Exception):
+    """ This exception is raised when items are not found.
+    """
+    def __str__(self) -> str:
+        return "Items not found"
