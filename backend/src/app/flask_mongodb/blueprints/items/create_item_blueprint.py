@@ -3,7 +3,7 @@
 
 
 from flask import Blueprint, jsonify, request, current_app
-from src.app.flask_mongodb.controllers.items.create_item_controller import \ 
+from src.app.flask_mongodb.controllers.items.create_item_controller import \
     CreateItemController
 
 
