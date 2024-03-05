@@ -80,7 +80,7 @@ def test_get_item_by_codebar_with_empty_field(mocker):
         ItemRepositoryInterface,
         "get_by_codebar",
     )
-    logger_mock = mocker.patch.object(LoggerInterface, "log_exception")
+    logger_mock = mocker.patch.object(LoggerInterface, "log_info")
     input_dto = GetItemByCodebarInputDto(
         codebar=""
     )

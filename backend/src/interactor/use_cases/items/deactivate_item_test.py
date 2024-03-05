@@ -4,20 +4,20 @@
 
 
 import pytest
-from src.interactor.use_cases.items.get_item_by_name \
-    import GetItemByNameUseCase
+from src.interactor.use_cases.items.deactivate_item \
+    import DeactivateItemUseCase
 from src.domain.entities.item import Item
-from src.interactor.dtos.items.get_item_by_name_dtos \
-    import GetItemByNameInputDto, GetItemByNameOutputDto
+from src.interactor.dtos.items.deactivate_item_dtos \
+    import DeactivateItemInputDto, DeactivateItemOutputDto
 from src.interactor.interfaces.repositories.item_repository \
     import ItemRepositoryInterface
-from src.interactor.interfaces.presenters.items.get_item_by_name_presenter \
-    import GetItemByNamePresenterInterface
+from src.interactor.interfaces.presenters.items.deactivate_item_presenter \
+    import DeactivateItemPresenterInterface
 from src.interactor.interfaces.logger.logger import LoggerInterface
 from src.interactor.errors.error_classes import ItemNotFoundException
 
 
-def test_get_item(mocker, fixture_item_biscuit):
+def test_deactivate_item(mocker, fixture_item_biscuit):
     item = Item(
         item_id=fixture_item_biscuit['item_id'],
         codebar=fixture_item_biscuit['codebar'],
@@ -28,67 +28,67 @@ def test_get_item(mocker, fixture_item_biscuit):
         state=fixture_item_biscuit['state'],
     )
     presenter_mock = mocker.patch.object(
-        GetItemByNamePresenterInterface,
+        DeactivateItemPresenterInterface,
         "present",
     )
     repository_mock = mocker.patch.object(
         ItemRepositoryInterface,
-        "get_by_name",
+        "deactivate",
     )
 
     input_dto_validator_mock = mocker.patch(
-        "src.interactor.use_cases.items.get_item_by_name.\
-GetItemByNameInputDtoValidator",
+        "src.interactor.use_cases.items.deactivate_item.\
+DeactivateItemInputDtoValidator",
     )
     logger_mock = mocker.patch.object(LoggerInterface, "log_info")
-    repository_mock.get_by_name.return_value = item
+    repository_mock.deactivate.return_value = item
     presenter_mock.present.return_value = "Test Output"
-    use_case = GetItemByNameUseCase(
+    use_case = DeactivateItemUseCase(
         presenter_mock,
         repository_mock,
         logger_mock
     )
-    input_dto = GetItemByNameInputDto(
-        name=fixture_item_biscuit['name']
+    input_dto = DeactivateItemInputDto(
+        item_id=fixture_item_biscuit['item_id']
     )
     result = use_case.execute(input_dto)
-    repository_mock.get_by_name.assert_called_once()
+    repository_mock.deactivate.assert_called_once()
     input_dto_validator_mock.assert_called_once_with(input_dto.to_dict())
     input_dto_validator_mock_instance = input_dto_validator_mock.return_value
     input_dto_validator_mock_instance.validate.assert_called_once_with()
     logger_mock.log_info.assert_called_once_with(
-        "Item Retrieved Successfully"
+        "Item Deactivated Successfully"
     )
-    output_dto = GetItemByNameOutputDto(item)
+    output_dto = DeactivateItemOutputDto(item)
     presenter_mock.present.assert_called_once_with(output_dto)
     assert result == "Test Output"
 
-    # Test None return from repository
-    repository_mock.get_by_name.return_value = None
-    name = fixture_item_biscuit['name']
-    with pytest.raises(ItemNotFoundException) as exc_info:
+    # Test ItemNotFoundException
+    repository_mock.deactivate.return_value = None
+    item_id = fixture_item_biscuit['item_id']
+    with pytest.raises(ItemNotFoundException) as exc:
         use_case.execute(input_dto)
-    assert str(exc_info.value) == f"Item with name: {name} not found"
+    assert str(exc.value) == f"Item with id: {item_id} not found"
 
 
-def test_get_item_by_name_with_empty_field(mocker):
+def test_deactivate_item_with_empty_field(mocker):
     presenter_mock = mocker.patch.object(
-        GetItemByNamePresenterInterface,
+        DeactivateItemPresenterInterface,
         "present",
     )
     repository_mock = mocker.patch.object(
         ItemRepositoryInterface,
-        "get_by_name",
+        "deactivate",
     )
     logger_mock = mocker.patch.object(LoggerInterface, "log_info")
-    input_dto = GetItemByNameInputDto(
-        name=""
-    )
-    use_case = GetItemByNameUseCase(
+    use_case = DeactivateItemUseCase(
         presenter_mock,
         repository_mock,
         logger_mock
     )
-    with pytest.raises(ValueError) as excinfo:
+    input_dto = DeactivateItemInputDto(
+        item_id=""
+    )
+    with pytest.raises(ValueError) as exc:
         use_case.execute(input_dto)
-    assert str(excinfo.value) == "Name: empty values not allowed"
+    assert str(exc.value) == "Item_id: empty values not allowed"
