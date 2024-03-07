@@ -43,7 +43,6 @@ class CreateItemUseCase:
             input_dto.description,
             input_dto.price,
             input_dto.stock,
-            input_dto.state,
         )
         if item is None:
             self.logger.log_exception("Item creation failed")

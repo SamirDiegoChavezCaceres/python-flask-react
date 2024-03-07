@@ -43,10 +43,6 @@ class CreateItemInputDtoValidator(BaseInputValidator):
                 "type": "integer",
                 "required": True,
             },
-            "state": {
-                "type": "boolean",
-                "required": True,
-            },
         }
 
     def validate(self) -> None:

@@ -15,7 +15,6 @@ class CreateItemInputDto:
     description: str
     price: float
     stock: int
-    state: bool
 
     def to_dict(self):
         """ Convert to dictionary

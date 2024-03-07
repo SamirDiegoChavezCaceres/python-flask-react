@@ -13,7 +13,6 @@ def test_create_item_input_dto_valid(fixture_item_biscuit):
         description=fixture_item_biscuit['description'],
         price=fixture_item_biscuit['price'],
         stock=fixture_item_biscuit['stock'],
-        state=fixture_item_biscuit['state'],
     )
     assert input_dto.codebar == fixture_item_biscuit['codebar']
     assert input_dto.name == fixture_item_biscuit['name']
@@ -26,5 +25,4 @@ def test_create_item_input_dto_valid(fixture_item_biscuit):
         "description": fixture_item_biscuit['description'],
         "price": fixture_item_biscuit['price'],
         "stock": fixture_item_biscuit['stock'],
-        "state": fixture_item_biscuit['state'],
     }

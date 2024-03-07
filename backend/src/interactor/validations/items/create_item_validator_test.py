@@ -21,7 +21,6 @@ BaseInputValidator.verify")
             "description": fixture_item_biscuit["description"],
             "price": fixture_item_biscuit["price"],
             "stock": fixture_item_biscuit["stock"],
-            "state": fixture_item_biscuit["state"],
     }
     schema = {
             "codebar": {
@@ -51,10 +50,6 @@ BaseInputValidator.verify")
                 "type": "integer",
                 "required": True,
             },
-            "state": {
-                "type": "boolean",
-                "required": True,
-            },
     }
     validator = CreateItemInputDtoValidator(input_data)
     validator.validate()
@@ -68,7 +63,6 @@ def test_base_validator_with_empty_data():
         "description": "Test",
         "price": 1.0,
         "stock": 1,
-        "state": True,
     }
     validator = CreateItemInputDtoValidator(data)
     with pytest.raises(ValueError) as excinfo:
@@ -83,7 +77,6 @@ def test_create_item_custom_validation():
         "description": "Test",
         "price": 1.0,
         "stock": 1,
-        "state": True,
     }
     validator = CreateItemInputDtoValidator(data)
     with pytest.raises(FieldValueNotPermittedException) as exception_info:

@@ -53,7 +53,6 @@ CreateItemInputDtoValidator",
         description=fixture_item_biscuit['description'],
         price=fixture_item_biscuit['price'],
         stock=fixture_item_biscuit['stock'],
-        state=fixture_item_biscuit['state'],
     )
     result = use_case.execute(input_dto)
     repository_mock.create.assert_called_once()
@@ -96,7 +95,6 @@ def test_create_item_empty_field(mocker, fixture_item_biscuit):
         description=fixture_item_biscuit['description'],
         price=fixture_item_biscuit['price'],
         stock=fixture_item_biscuit['stock'],
-        state=fixture_item_biscuit['state'],
     )
     with pytest.raises(ValueError) as excinfo:
         use_case.execute(input_dto)
