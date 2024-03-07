@@ -33,4 +33,3 @@ def fixture_item_chocolate():
         "stock": int(5),
         "state": True,
     }
-
