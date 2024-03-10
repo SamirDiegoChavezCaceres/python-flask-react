@@ -6,6 +6,23 @@ from flask import Flask, g
 from werkzeug.exceptions import HTTPException
 from src.app.flask_postgresql.blueprints.items.create_item_blueprint\
     import blueprint_create_item
+from src.app.flask_postgresql.blueprints.items.delete_item_blueprint\
+    import blueprint_delete_item
+from src.app.flask_postgresql.blueprints.items.update_item_blueprint\
+    import blueprint_update_item
+from src.app.flask_postgresql.blueprints.items.get_item_blueprint\
+    import blueprint_get_item
+from src.app.flask_postgresql.blueprints.items.get_item_by_codebar_blueprint\
+    import blueprint_get_item_by_codebar
+from src.app.flask_postgresql.blueprints.items.get_item_by_name_blueprint\
+    import blueprint_get_item_by_name
+from src.app.flask_postgresql.blueprints.items.activate_item_blueprint\
+    import blueprint_activate_item
+from src.app.flask_postgresql.blueprints.items.deactivate_item_blueprint\
+    import blueprint_deactivate_item
+from src.app.flask_postgresql.blueprints.items.get_all_items_blueprint\
+    import blueprint_get_all_items
+
 from src.interactor.interfaces.logger.logger import LoggerInterface
 from src.interactor.errors.error_classes import FieldValueNotPermittedException
 from src.infra.db_models.postgresql.postgresql_base import session
@@ -33,7 +50,18 @@ def create_flask_postgresql_app(logger: LoggerInterface):
     app = Flask(__name__)
     app.config['logger'] = logger
     app.register_blueprint(blueprint_home, url_prefix='/')
+
     app.register_blueprint(blueprint_create_item, url_prefix='/v1')
+    app.register_blueprint(blueprint_delete_item, url_prefix='/v1')
+    app.register_blueprint(blueprint_update_item, url_prefix='/v1')
+    app.register_blueprint(blueprint_get_item, url_prefix='/v1')
+
+    app.register_blueprint(blueprint_get_item_by_codebar, url_prefix='/v1')
+    app.register_blueprint(blueprint_get_item_by_name, url_prefix='/v1')
+    app.register_blueprint(blueprint_activate_item, url_prefix='/v1')
+    app.register_blueprint(blueprint_deactivate_item, url_prefix='/v1')
+    app.register_blueprint(blueprint_get_all_items, url_prefix='/v1')
+
 
     @app.errorhandler(HTTPException)
     def handle_http_exception(error: HTTPException):
