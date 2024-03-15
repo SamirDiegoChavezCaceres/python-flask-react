@@ -3,6 +3,7 @@
 
 
 from flask import Flask, g
+from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
 from src.app.flask_postgresql.blueprints.items.create_item_blueprint\
     import blueprint_create_item
@@ -49,6 +50,9 @@ def create_flask_postgresql_app(logger: LoggerInterface):
     """ Create Flask PostgreSQL App """
     app = Flask(__name__)
     app.config['logger'] = logger
+
+    CORS(app)
+
     app.register_blueprint(blueprint_home, url_prefix='/')
 
     app.register_blueprint(blueprint_create_item, url_prefix='/v1')
