@@ -1,0 +1,13 @@
+# Backend Flask
+## Routes
+/item/activate/ ["PUT"]
+/item/deactivate/ ["PUT"]
+/item/ ["POST"]
+/item/ ["DELETE"]
+/items/ ["GET"]
+/item/ ["GET"]
+/item/ ["PUT"]
+/item/codebar/ ["GET"]
+/item/name/ ["GET"]
+/ ['GET']
+use prefix /v1

@@ -1,0 +1,17 @@
+
+
+import React from "react";
+
+
+export const About = () => (
+    <>
+        <h2>About</h2>
+        <p>
+        This is a simple example of a React component.
+        </p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor exercitationem repellendus numquam excepturi consequatur nesciunt, cupiditate sint et minima eligendi voluptatibus inventore nihil voluptate, minus dolorem error hic totam esse? Aut earum aliquam repellat iure culpa hic quam minus excepturi non asperiores consectetur doloremque, voluptates temporibus, cum dolores laborum! Ipsam ea beatae eveniet magni. Sint, dicta consequuntur quos id aperiam at aut voluptatem ab nam non quia optio, obcaecati odit ipsa quisquam alias nulla dolorum nisi eligendi harum. Exercitationem, provident voluptatum facilis ullam enim dignissimos et laborum eius quidem soluta eum labore facere sapiente quo, tempora sed sunt optio! Inventore obcaecati perspiciatis aperiam minima temporibus animi exercitationem veniam eligendi omnis dicta eos, dolores corrupti fugit id vero labore earum provident consectetur accusamus aliquam placeat. Ut, cum! Accusantium esse cum fuga facere neque dignissimos laudantium tempora quasi. Iure, necessitatibus voluptates. Quas alias est harum odit veritatis! Est quos mollitia dolores, adipisci ab magni libero hic possimus molestias laboriosam dolor? Illum hic perspiciatis aspernatur ipsam. Quas quidem, est cumque deleniti numquam quaerat tempora autem obcaecati! Atque cum laborum unde quibusdam ipsum doloremque provident porro similique nulla amet, assumenda eum quod doloribus voluptates perspiciatis corrupti qui! Modi vitae blanditiis non tenetur sint inventore nam accusantium animi velit architecto hic perspiciatis in eveniet nemo vero quasi saepe omnis quia fuga, fugiat illum. Fugit sit animi error ducimus omnis! Maxime neque porro unde est libero consectetur aliquid voluptatibus debitis voluptatum expedita totam alias iure possimus, quisquam delectus minima aliquam eius, dignissimos commodi sit exercitationem dicta eveniet quae in? Vitae laboriosam veniam ullam a. Sed et ea voluptas quam nobis aut adipisci voluptatum! Perferendis placeat ipsum temporibus, blanditiis atque natus dolores inventore eos, aperiam dignissimos, dolorum enim totam facere illum consectetur ad sequi. Molestiae, distinctio eius culpa in facilis magnam praesentium adipisci. Consequuntur dolores quod harum.</p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ab quibusdam, eveniet expedita, quis, possimus voluptas assumenda molestias aut consectetur magnam id asperiores dicta odit placeat reiciendis consequatur fuga adipisci nihil iusto accusamus vero nemo hic nobis? Obcaecati iure, voluptates beatae in optio, velit sequi laborum consectetur dignissimos a quos! Quos quas fuga ullam maxime consectetur, dolorem voluptatem modi quisquam facilis, asperiores a quae? Harum fugit, quos vel dolor laborum molestiae ex voluptatum quibusdam quasi? Dolorum sit aperiam quasi maiores ullam voluptatibus, totam doloremque id alias. Iure incidunt quasi non modi minima eveniet harum repellat hic odit voluptatem, voluptas exercitationem?
+        </p>
+    </>
+    );
